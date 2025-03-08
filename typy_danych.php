@@ -139,7 +139,7 @@
                     </div>
                </div>
           </div>
-
+          
           <div class="content-element">
                <h2>1.2 Float (liczby zmiennoprzecinkowe)</h2>
                <ul>
@@ -159,7 +159,7 @@
                          <span class="func">var_dump</span>(<span class="var">$float1</span>, <span class="var">$float2</span>, <span class="var">$float3</span>);
                     </div>
                     <p>Funkcje pomocnicze:</p>
-                    <div class="example">
+                    <div class="example" style="margin-bottom: 0;">
                          <div class="header">
                               <p>php</p>
                               <p>copy</p>
@@ -168,6 +168,46 @@
                               <span class="func">is_float</span>(<span class="var">$float1</span>);&nbsp;&nbsp;<span class="com">// true</span><br>
                               <span class="func">floatval</span>(<span class="str">"3.99"</span>);&nbsp;&nbsp;&nbsp;<span class="com">// 3.99</span>
                          </div>
+                    </div>
+               </div>
+          </div>
+
+          <div class="content-element">
+               <h2>1.3 String (lancuchy znakow)</h2>
+               <p>Ciag znakow zapisany w " " lub ''</p>
+
+               <div class="example">
+                    <div class="header">
+                         <p>php</p>
+                         <p>copy</p>
+                    </div>
+                    <div class="content">
+                         <span class="var">$float1</span> = <span class="var">3.14</span>;<br>
+                         <span class="var">$float2</span> = <span class="var">2.5e3</span>;&nbsp;&nbsp;<span class="com">// 2500 (notacja naukowa)</span><br>
+                         <span class="var">$float3</span> = <span class="var">5E-2</span>;&nbsp;&nbsp;&nbsp;<span class="com">// 0.05</span><br>
+                         <br>
+                         <span class="func">var_dump</span>(<span class="var">$float1</span>, <span class="var">$float2</span>, <span class="var">$float3</span>);<br>
+                    </div>
+               </div>
+          </div>
+
+          <div class="content-element">
+               <h2>1.4 Boolean (wartosci logiczne)</h2>
+               <p>Moze przyjmowac <b>true</b> (prawda) lub <b>false</b> (falsz)</p>
+               <p>Uzywany w warunkach i operacjach logicznych</p>
+
+               <p><br>Konwersja na boolean</p>
+               <div class="example">
+                    <div class="header">
+                         <p>php</p>
+                         <p>copy</p>
+                    </div>
+                    <div class="content">
+                         <span class="func">var_dump</span>((<span class="var">bool</span>) <span class="var">0</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// false</span> <br>
+                         <span class="func">var_dump</span>((<span class="var">bool</span>) <span class="var">0.0</span>);&nbsp;&nbsp;&nbsp;<span class="com">// false</span> <br>
+                         <span class="func">var_dump</span>((<span class="var">bool</span>) <span class="str">""</span>);&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// false</span> <br>
+                         <span class="func">var_dump</span>((<span class="var">bool</span>) <span class="var">null</span>);&nbsp;&nbsp;<span class="com">// false</span> <br>
+                         <span class="func">var_dump</span>((<span class="var">bool</span>) <span class="str">"0"</span>);&nbsp;&nbsp;&nbsp;<span class="com">// false</span> <br>
                     </div>
                </div>
           </div>
