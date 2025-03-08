@@ -28,6 +28,62 @@
                color: rgb(240, 65, 202);
                text-decoration: underline;
           }
+          .content-element h1
+          {
+               font-size: 33px;
+               margin-bottom: 5px;
+          }
+          .content-element h2
+          {
+               font-size: 29px;
+               margin-bottom: 5px;
+          }
+          .content-element ul
+          {
+               margin-top: 10px;
+          }
+          .example
+          {
+               border-radius: 10px;
+               overflow: hidden;
+               margin: 20px 0;
+          }
+          .example .header
+          {
+               display: flex;
+               background-color: rgb(62, 62, 73);
+               justify-content: space-between;
+               padding: 3px 30px;
+               font-size: 15px;
+               font-weight: 300;
+          }
+          .example .content
+          {
+               background-color: rgb(26, 26, 26);
+               padding: 10px 30px;
+               padding-bottom: 20px;
+               font-family: 'Courier New', Courier, monospace !important;
+               font-size: 17px;
+               font-weight: 300;
+          }
+          .example .content *
+          {
+               font-family: 'Courier New', Courier, monospace !important;
+               font-size: 17px;
+               font-weight: 300;
+          }
+          .example .var
+          {
+               color: rgb(240, 65, 202);
+          }
+          .example .com
+          {
+               color: lightgray;
+          }
+          .example .func
+          {
+               color: red;
+          }
      </style>
 </head>
 <body>
@@ -49,6 +105,32 @@
                     </div>
                     <div style="width: 33%; border-left: 1px solid rgb(195, 195, 195); height: 100%; display: flex; justify-content: center; align-items: center; font-size: 30px;">
                          Specjalne
+                    </div>
+               </div>
+          </div>
+
+          <div class="content-element">
+               <h1>1. Typy skalarne (prymitywne)</h1>
+               <p>Typy skalarne to najprostsze typy, ktore przechowuja jedna wartosc</p>
+
+               <h2 style="margin-top: 15px;">1.1 Integer (liczby calkowite)</h2>
+               <ul>
+                    <li>Reprezentuje liczby calkowite (dodatnie, ujemne, zero).</li>
+                    <li>Domyslnie zapisuje wartosci w systemie dzisietnym. Mozna uzywac rowniez systemu osemkowego (0o), szesnastkowego (0x) i binarnego (0b).</li>
+                    <li>Wartosc maksymalna zalezy od systemu (32-bit lub 64-bit).</li>
+               </ul>
+               <div class="example">
+                    <div class="header">
+                         <p>php</p>
+                         <p>copy</p>
+                    </div>
+                    <div class="content">
+                         <span class="var">$liczba</span> = <span class="var">42</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// Dziesietny</span><br>
+                         <span class="var">$bin</span> = <span class="var">0b1010;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// Binarny (10)</span><br>
+                         <span class="var">$oct</span> = <span class="var">0o77;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// Osemkowy (63)</span><br>
+                         <span class="var">$hex</span> = <span class="var">0x1A;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// Szesnastkowy (26)</span><br>
+                         <br>
+                         <span class="func">var_dump</span>(<span class="var">$liczba</span>, <span class="var">$bin</span>, <span class="var">$oct</span>, <span class="var">$hex</span>);
                     </div>
                </div>
           </div>
