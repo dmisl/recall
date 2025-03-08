@@ -61,10 +61,11 @@
           {
                background-color: rgb(26, 26, 26);
                padding: 10px 30px;
-               padding-bottom: 20px;
+               padding-bottom: 17px;
                font-family: 'Courier New', Courier, monospace !important;
                font-size: 17px;
                font-weight: 300;
+               margin-bottom: 20px;
           }
           .example .content *
           {
@@ -83,6 +84,10 @@
           .example .func
           {
                color: red;
+          }
+          .example .str
+          {
+               color: rgb(0, 172, 63);
           }
      </style>
 </head>
@@ -135,6 +140,37 @@
                </div>
           </div>
 
+          <div class="content-element">
+               <h2>1.2 Float (liczby zmiennoprzecinkowe)</h2>
+               <ul>
+                    <li>Reprezentuje liczby rzeczywiste (dziesietne)</li>
+                    <li>Wartosc maksymalna zalezy od systemu (zazwyczaj 1.8e308 dla 64-bit)</li>
+               </ul>
+               <div class="example">
+                    <div class="header">
+                         <p>php</p>
+                         <p>copy</p>
+                    </div>
+                    <div class="content">
+                         <span class="var">$float1</span> = <span class="var">3.14</span>;<br>
+                         <span class="var">$float2</span> = <span class="var">2.5e3</span>;&nbsp;&nbsp;<span class="com">// 2500 (notacja naukowa)</span><br>
+                         <span class="var">$float3</span> = <span class="var">5E-2</span>;&nbsp;&nbsp;&nbsp;<span class="com">// 0.05</span><br>
+                         <br>
+                         <span class="func">var_dump</span>(<span class="var">$float1</span>, <span class="var">$float2</span>, <span class="var">$float3</span>);
+                    </div>
+                    <p>Funkcje pomocnicze:</p>
+                    <div class="example">
+                         <div class="header">
+                              <p>php</p>
+                              <p>copy</p>
+                         </div>
+                         <div class="content">
+                              <span class="func">is_float</span>(<span class="var">$float1</span>);&nbsp;&nbsp;<span class="com">// true</span><br>
+                              <span class="func">floatval</span>(<span class="str">"3.99"</span>);&nbsp;&nbsp;&nbsp;<span class="com">// 3.99</span>
+                         </div>
+                    </div>
+               </div>
+          </div>
      </div>
 </body>
 </html>
