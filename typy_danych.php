@@ -211,6 +211,33 @@
                     </div>
                </div>
           </div>
+
+          <div class="content-element">
+               <h1>2. Zlozone</h1>
+               <h2>2.1 Array (tablica)</h2>
+               <p>Moze przechowywac jedna i wiecej wartosci</p>
+               <p>Tablice dziela sie na 3 typy</p>
+               <ol>
+                    <li>Indeksowa, najprostszy typ tablicy, gdzie PHP automatycznie indeksuje wartosci w tablice, zaczynajac od zera (0, 1, 2, 3, ..)</li>
+                    <li>Asocjacyjna, tablica w ktorej programista przypisuje klucze recznie do roznych wartosci, klucz moze byc typu Integer, lub String, w innych przypadkach PHP bedzie probowal przetworzyc wartosc na Integer</li>
+                    <li>Wielowymiarowa, to tablica, ktora miesci w sobie inne tablice</li>
+               </ol>
+          </div>
+          <div class="example">
+               <div class="header">
+                    <p>php</p>
+                    <p>copy</p>
+               </div>
+               <div class="content">
+                    $indexed = ["Cat", "Dog", 123, 3.14];
+                    $asocjacyjna = [
+                         "name" => "David",
+                         "age" => 11,
+                         34 => "Hello"
+                    ];
+                    $wielowymiarowa = ["Hello", ["Another hello"] ];
+               </div>
+          </div>
      </div>
 </body>
 </html>
