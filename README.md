@@ -15,3 +15,4 @@ mikroserwisy
 JWT OAuth 2.0 ACL w bazie
 mikro framework
 wejcie przez index.php
+header()
