@@ -34,6 +34,11 @@ require '../config.php';
           <div style="width: 1000px; height: 100%; display: flex; justify-content: center; align-items: center; background-color: rgba(255, 145, 233, 0.148);">
                <div style="width: 900px; position: relative; top: -100px; display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
                     <a href="typy_danych.php" class="element">Typy danych</a>
+                    <form action="" method="POST">
+                         <input type="hidden" name="csrf_token" value="<?=generateToken()?>">
+                         <input type="text" name="name" placeholder="name">
+                         <button type="submit">Send data</button>
+                    </form>
                     <a href="index.php" class="element">Log in</a>
                     <a href="index.php" class="element">Poligon</a>
                </div>
