@@ -5,6 +5,7 @@
         }
     },
     "require": {
-        "nesbot/carbon": "^3.8"
+        "nesbot/carbon": "^3.8",
+        "predis/predis": "^2.3"
     }
 }
