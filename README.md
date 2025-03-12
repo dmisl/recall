@@ -4,7 +4,8 @@ ob_start i tak dalej
 -- dynamiczne strone i pliki w PHPie
 +-Zabezpiecznie sesji
 Alternatywne sesji
-Praca z plikami CSV, i co to jest
++-Redis to odzelny temat, wydajna baza danych typu key-value
++-Polaczenie Redis jako serwera sesji
 cURL, Guzzle
 realizacja reaktywnosci phpa
 Redis, Swoole, WebSockets, GraphQL

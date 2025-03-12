@@ -6,17 +6,10 @@ use App\Services\RedisService;
 
 class HomeController {
 
-     private $redisService;
-
-     public function __construct(RedisService $redisService)
-     {
-          $this->redisService = $redisService;
-     }
-
      public function index()
      {
-          $this->redisService->set('name', 'Dmytro');
-          echo $this->redisService->get('name');
+          $redisService = new RedisService();
+          $redisService->set('name', 'Dmytro');
           include '../resources/views/index.php';
      }
 
@@ -27,6 +20,7 @@ class HomeController {
                unset($_SESSION['csrf_token']);
                
                header('Location: http://127.0.0.1/recall/');
+               exit;
           } else
           {
                echo 'ure fucked up';

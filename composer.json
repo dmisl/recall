@@ -6,6 +6,7 @@
     },
     "require": {
         "nesbot/carbon": "^3.8",
-        "predis/predis": "^2.3"
+        "predis/predis": "^2.3",
+        "guzzlehttp/guzzle": "^7.9"
     }
 }
