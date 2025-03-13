@@ -9,20 +9,20 @@ class HomeController {
 
      public function index()
      {
-          echo '<pre>';
-          $guzzle = new Client();
-          $promise = $guzzle->getAsync('https://jsonplaceholder.typicode.com/users/')
-               ->then(function ($response) use ($guzzle) {
-                    $data = json_decode($response->getBody());
-                    foreach ($data as $user) {
-                         echo "Uzytkownik: $user->name <br>";
-                    }
-                    return 123;
-               })
-               ->then(function ($response) {
-                    var_dump($response);
-               })
-               ->wait();
+          // echo '<pre>';
+          // $guzzle = new Client();
+          // $promise = $guzzle->getAsync('https://jsonplaceholder.typicode.com/users/')
+          //      ->then(function ($response) use ($guzzle) {
+          //           $data = json_decode($response->getBody());
+          //           foreach ($data as $user) {
+          //                echo "Uzytkownik: $user->name <br>";
+          //           }
+          //           return 123;
+          //      })
+          //      ->then(function ($response) {
+          //           var_dump($response);
+          //      })
+          //      ->wait();
           include '../resources/views/index.php';
      }
 
