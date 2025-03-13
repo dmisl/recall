@@ -3,13 +3,26 @@
 namespace App\Controller;
 
 use App\Services\RedisService;
+use GuzzleHttp\Client;
 
 class HomeController {
 
      public function index()
      {
-          $redisService = new RedisService();
-          $redisService->set('name', 'Dmytro');
+          echo '<pre>';
+          $guzzle = new Client();
+          $promise = $guzzle->getAsync('https://jsonplaceholder.typicode.com/users/')
+               ->then(function ($response) use ($guzzle) {
+                    $data = json_decode($response->getBody());
+                    foreach ($data as $user) {
+                         echo "Uzytkownik: $user->name <br>";
+                    }
+                    return 123;
+               })
+               ->then(function ($response) {
+                    var_dump($response);
+               })
+               ->wait();
           include '../resources/views/index.php';
      }
 
