@@ -9,11 +9,5 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 session_start();
 echo '<pre>';
-$pdo = new PDO('mysql:host=localhost;dbname=english', 'root', '');
-
-$stmt = $pdo->prepare('SELECT * FROM users');
-$stmt->execute();
-
-var_dump($stmt->fetch());
 
 $router->dispatch($request, $method);

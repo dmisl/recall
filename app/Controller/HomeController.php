@@ -5,25 +5,28 @@ namespace App\Controller;
 use App\Services\RedisService;
 use GuzzleHttp\Client;
 
+class User 
+{
+     private string $name = "Default name";
+     
+     public function __construct(string $name)
+     {
+          $this->name = $name;
+          echo $this->name;
+     }
+
+     public function __destruct()
+     {
+          echo "wassup guys I told you im not gay";
+     }
+}
+
 class HomeController {
 
      public function index()
      {
-          // echo '<pre>';
-          // $guzzle = new Client();
-          // $promise = $guzzle->getAsync('https://jsonplaceholder.typicode.com/users/')
-          //      ->then(function ($response) use ($guzzle) {
-          //           $data = json_decode($response->getBody());
-          //           foreach ($data as $user) {
-          //                echo "Uzytkownik: $user->name <br>";
-          //           }
-          //           return 123;
-          //      })
-          //      ->then(function ($response) {
-          //           var_dump($response);
-          //      })
-          //      ->wait();
-          include '../resources/views/index.php';
+          $user = new User("Dmytro");
+          // include '../resources/views/index.php';
      }
 
      public function store()
