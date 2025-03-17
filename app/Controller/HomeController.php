@@ -5,28 +5,11 @@ namespace App\Controller;
 use App\Services\RedisService;
 use GuzzleHttp\Client;
 
-class User 
-{
-     private string $name = "Default name";
-     
-     public function __construct(string $name)
-     {
-          $this->name = $name;
-          echo $this->name;
-     }
-
-     public function __destruct()
-     {
-          echo "wassup guys I told you im not gay";
-     }
-}
-
 class HomeController {
 
      public function index()
      {
-          $user = new User("Dmytro");
-          // include '../resources/views/index.php';
+          include '../resources/views/index.php';
      }
 
      public function store()
