@@ -12,7 +12,10 @@ class RouteDispatcher
           $routes = Route::getRoutes();
           if(isset($routes[$method][$request]))
           {
-               echo 'all good, we`re ready to call some methods, yeah boys';
+               $controllerPath = $routes[$method][$request]['controller'];
+               $method = $routes[$method][$request]['method'];
+               $controller = new $controllerPath;
+               call_user_func([$controller, $method]);
           } else
           {
                echo "something went wrong";

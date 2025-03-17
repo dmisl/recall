@@ -13,7 +13,7 @@ class Route
           [$controller, $method] = [$controller[0], $controller[1]];
           if(!isset(self::$routes['GET'][$route]) && class_exists($controller) && method_exists($controller, $method))
           {
-               self::$routes['GET'][$route] = $controller;
+               self::$routes['GET'][$route] = ["controller" => $controller, "method" => $method];
           } else
           {
                throw new Exception("get the hell out of there, its already exists");
@@ -34,7 +34,6 @@ class Route
 
      public static function getRoutes() : array
      {
-          var_dump(self::$routes);
           return self::$routes;
      }
 }
