@@ -1,9 +1,8 @@
 <?php
 
 use App\Controller\HomeController;
-use App\Core\Router;
+use App\Core\Route;
 
-$router = new Router();
+Route::get('/', [HomeController::class, 'index']);
 
-$router->get('/', [HomeController::class, 'index']);
-$router->post('/', [HomeController::class, 'store']);
+Route::getRoutes();
