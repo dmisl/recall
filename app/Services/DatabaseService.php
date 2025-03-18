@@ -31,13 +31,32 @@ class DatabaseService
                'table' => $table,
                'dbname' => Config::get('db.name')
           ]);
-          return $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+          $result = $stmt->fetchAll(PDO::FETCH_COLUMN);
+          
+          // deleting id element
+          $result = array_values(array_filter($result, fn($value) => $value !== 'id'));
+          
+          return $result;
      }
 
-     // private static function exists(string $table, array $data)
-     // {
-     //      $sql = "SELECT 1 FROM $table WHERE $column = ";
-     // }
+     public static function exists(string $table, array $data) : bool
+     {
+          $wheres = [];
+          $params = [];
+
+          foreach ($data as $key => $value) {
+               $wheres[] = "$key = :$key";
+               $params["$key"] = $value;
+          }
+
+          $columns = $columns = implode(", ", array_keys($data));
+          $whereString = implode(' OR ', $wheres);
+          $sql = "SELECT $columns FROM $table WHERE $whereString";
+          $stmt = self::$connection->prepare($sql);
+          $stmt->execute($params);
+          return (bool) count($stmt->fetchAll(PDO::FETCH_ASSOC));
+     }
 
      public static function load()
      {

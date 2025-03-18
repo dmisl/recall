@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Services\DatabaseService;
+use Exception;
 
 abstract class Model
 {
@@ -13,7 +14,23 @@ abstract class Model
      public static function create(array $parameters) : static
      {
           self::checkInstance();
-          // DatabaseService::insert(self::$table, $parameters);
+          $column_data = [];
+          foreach (self::$unique_columns as $unique_column) {
+               foreach ($parameters as $column => $value) {
+                    if($unique_column == $column)
+                    {
+                         $column_data[$column] = $value;
+                    }
+               }
+          }
+          if(!DatabaseService::exists(self::$table, $column_data))
+          {
+               DatabaseService::insert(self::$table, $parameters);
+          } else
+          {
+               // here we should realize redirect back with message
+               // throw new Exception("Record with unique column already exists");
+          }
           return self::$instance;
      }
 
@@ -23,7 +40,7 @@ abstract class Model
           {
                self::$instance = new static();
                self::$table = strtolower((new \ReflectionClass(static::class))->getShortName()).'s';
-               var_dump(DatabaseService::getUniqueRecords(self::$table));
+               self::$unique_columns = DatabaseService::getUniqueRecords(self::$table);
           }
      }
 
