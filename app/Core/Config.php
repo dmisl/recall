@@ -9,19 +9,26 @@ class Config
      private static $config = null;
 
      /**
-      * Function loads data from app/config.php at the start of application
+      * Method loads data from app/config.php at the start of application
       */
      public static function load() : void
      {
           self::$config = require __DIR__ . '/../config.php';
      }
 
+     /**
+      * Method gets data from existing configuration by entering parameters as keys to some conf data
+      * @param string|array $key key(s and subkeys) to the config branch
+      * @param string $subkey subkey of branch that user wants to get
+      * 
+      * @return string|array value(s) from configuration file
+      *
+      * @throws Exception if key or subkey doesnt exist 
+      */
      public static function get(string|array $key, $subkey = null) : string|array
      {
           if(gettype($key) == 'string')
           {
-               echo 'one returned';
-               var_dump(self::getByKeys($key, $subkey));
                return self::getByKeys($key, $subkey);
           } else
           {
@@ -29,8 +36,7 @@ class Config
                foreach ($key as $little_key) {
                     $data[] = self::getByKeys($little_key);
                }
-               echo 'many returned';
-               var_dump($data);
+               return $data;
           }
           return '';
      }

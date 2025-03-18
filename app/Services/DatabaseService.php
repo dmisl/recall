@@ -11,5 +11,6 @@ class DatabaseService
      public static function query()
      {
           self::$connection = Database::getConnection();
+          var_dump(self::$connection);
      }
 }

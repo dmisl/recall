@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Core\Database;
 use App\Model\User;
+use App\Services\DatabaseService;
 
 class HomeController {
 
      public function index()
      {
-          Database::getConnection();
+          DatabaseService::query();
           include '../resources/views/index.php';
      }
 
