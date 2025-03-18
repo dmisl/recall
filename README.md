@@ -20,8 +20,12 @@ mikroserwisy
 
 oop
 
-metody magiczne w teorii i zastosowanie
-statyczne metody i wlasciwosci w realizacji (jak w larvu)
++metody magiczne w teorii i zastosowanie
++statyczne metody i wlasciwosci w realizacji (jak w larvu)
 realizacja polimorfizmu, wiecej informacji o 2-ch glownych typach (dobra, zla realizacja budowania)
 !zrobic tatuaz 4-ch filarow programowania obiektowego
 SOLID 
+
+todo
+
+documentation

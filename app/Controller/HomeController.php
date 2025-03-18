@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use App\Services\RedisService;
-use GuzzleHttp\Client;
+use App\Core\Database;
+use App\Model\User;
 
 class HomeController {
 
      public function index()
      {
+          Database::getConnection();
           include '../resources/views/index.php';
      }
 

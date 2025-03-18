@@ -4,6 +4,11 @@ namespace App\Core;
 
 class RouteDispatcher
 {
+     /**
+      * Function dispatches incoming HTTP requests
+      * and gives relevant response to user
+      * @return void
+      */
      public static function dispatch() : void
      {
           $request = str_replace('recall/', '', $_SERVER['REQUEST_URI']);
@@ -18,7 +23,7 @@ class RouteDispatcher
                call_user_func([$controller, $method]);
           } else
           {
-               echo "something went wrong";
+               echo "404 page not found";
           }
      }
 }

@@ -25,7 +25,7 @@ class Route
           [$controller, $method] = [$controller[0], $controller[1]];
           if(!isset(self::$routes['POST'][$route]) && class_exists($controller) && method_exists($controller, $method))
           {
-               self::$routes['POST'][$route] = $controller;
+               self::$routes['POST'][$route] = ["controller" => $controller, "method" => $method];
           } else
           {
                throw new Exception("get the hell out of there, its already exists");
