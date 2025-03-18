@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Core\Config;
 use App\Core\Database;
+use PDO;
 
 class DatabaseService
 {
@@ -21,10 +23,21 @@ class DatabaseService
           return self::$connection->lastInsertId();
      }
 
-     private static function exists(string $table, array $data)
+     public static function getUniqueRecords(string $table)
      {
-          $sql = "SELECT 1 FROM $table WHERE $column = ";
+          $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = :table AND TABLE_SCHEMA = :dbname";
+          $stmt = self::$connection->prepare($sql);
+          $stmt->execute([
+               'table' => $table,
+               'dbname' => Config::get('db.name')
+          ]);
+          return $stmt->fetchAll(PDO::FETCH_COLUMN);
      }
+
+     // private static function exists(string $table, array $data)
+     // {
+     //      $sql = "SELECT 1 FROM $table WHERE $column = ";
+     // }
 
      public static function load()
      {
