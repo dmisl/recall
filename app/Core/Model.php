@@ -2,12 +2,27 @@
 
 namespace App\Core;
 
-use PDO;
+use App\Services\DatabaseService;
 
 abstract class Model
 {
-     public static function find($id)
+     protected static $table;
+     protected static $instance = null;
+
+     public static function create(array $parameters) : static
      {
-          echo $id;
+          self::checkInstance();
+          DatabaseService::insert(self::$table, $parameters);
+          return self::$instance;
      }
+
+     private static function checkInstance()
+     {
+          if(self::$instance === null)
+          {
+               self::$instance = new static();
+               self::$table = strtolower((new \ReflectionClass(static::class))->getShortName()).'s';
+          }
+     }
+
 }

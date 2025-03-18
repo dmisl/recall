@@ -10,7 +10,11 @@ class HomeController {
 
      public function index()
      {
-          DatabaseService::query();
+          User::create([
+               'name' => 'Dmytro Slutyi',
+               'email' => 'fdmisl07@gmail.com',
+               'password' => '098spa',
+          ]);
           include '../resources/views/index.php';
      }
 
