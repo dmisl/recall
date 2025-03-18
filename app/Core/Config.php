@@ -16,22 +16,38 @@ class Config
           self::$config = require __DIR__ . '/../config.php';
      }
 
-     public static function get(string $key, $value = null) : string
+     public static function get(string|array $key, $subkey = null) : string|array
      {
-          echo '<pre>';
-          // var_dump(self::$config);
+          if(gettype($key) == 'string')
+          {
+               echo 'one returned';
+               var_dump(self::getByKeys($key, $subkey));
+               return self::getByKeys($key, $subkey);
+          } else
+          {
+               $data = [];
+               foreach ($key as $little_key) {
+                    $data[] = self::getByKeys($little_key);
+               }
+               echo 'many returned';
+               var_dump($data);
+          }
+          return '';
+     }
+
+     private static function getByKeys(string|array $key, $subkey = null) : string
+     {
           if(str_contains($key, '.'))
           {
-               [$key, $value] = explode('.', $key);
+               [$key, $subkey] = explode('.', $key);
           }
-          if(isset(self::$config[$key]) && isset(self::$config[$key][$value]))
+          if(isset(self::$config[$key]) && isset(self::$config[$key][$subkey]))
           {
-               echo 'hello';
+               return self::$config[$key][$subkey];
           } else
           {
                throw new Exception('bruh you`re looking for something non existing');
           }
-          return '';
      }
 
 }

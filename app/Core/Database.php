@@ -11,8 +11,8 @@ class Database
 
      private function __construct()
      {
-          Config::get('db.name');
-          // self::$connection = new PDO("");
+          $driver = Config::get(['db.name', 'db.driver', 'db.host']);
+          // self::$connection = new PDO("{Config::get('')}");
      }
 
      public static function getConnection()
