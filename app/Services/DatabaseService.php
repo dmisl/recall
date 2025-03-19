@@ -23,6 +23,15 @@ class DatabaseService
           return self::$connection->lastInsertId();
      }
 
+     public static function findById($table, $id)
+     {
+          $stmt = self::$connection->prepare("SELECT * FROM $table WHERE id = :id LIMIT 1");
+          $stmt->execute(['id' => $id]);
+          $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+          return $result;
+     }
+
      public static function getUniqueRecords(string $table)
      {
           $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = :table AND TABLE_SCHEMA = :dbname";

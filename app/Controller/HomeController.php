@@ -10,11 +10,8 @@ class HomeController {
 
      public function index()
      {
-          User::create([
-               'name' => 'Dmytro Slutyi',
-               'email' => 'fdmisl07@gmail.com',
-               'password' => '098spa',
-          ]);
+          $user = User::find(1);
+          echo $user->password;
           include '../resources/views/index.php';
      }
 
