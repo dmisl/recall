@@ -16,6 +16,10 @@ class DatabaseService
      {
           $columns = implode(", ", array_keys($data));
           $values = implode(", ", array_map(fn($key) => ":$key", array_keys($data)));
+          if(isset($data['password']))
+          {
+               $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+          }
           $sql = "INSERT INTO $table ($columns) VALUES ($values)";
           $stmt = self::$connection->prepare($sql);
           $stmt->execute($data);
