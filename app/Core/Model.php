@@ -9,7 +9,6 @@ abstract class Model
 {
      protected static $table;
      protected static $unique_columns;
-     protected static $instance = null;
      protected array $attributes = [];
 
      protected function __construct(array $data = [])
@@ -57,18 +56,24 @@ abstract class Model
                // here we should realize redirect back with message
                // throw new Exception("Record with unique column already exists");
           }
-          return self::$instance;
+          return new static();
      }
 
      public function update(array $data)
      {
-          echo DatabaseService::update(static::$table, $this->id, $data);
+          DatabaseService::update(static::$table, $this->id, $data);
 
           foreach ($data as $key => $value) {
                $this->attributes[$key] = $key != 'password' ? $value : password_hash($value, PASSWORD_DEFAULT);
           }
 
           return static::find($this->id);
+     }
+
+     public function delete()
+     {
+          DatabaseService::delete(static::$table, $this->id);
+          return null;
      }
 
      protected static function checkInstance()

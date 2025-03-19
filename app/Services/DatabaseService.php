@@ -52,6 +52,14 @@ class DatabaseService
           return true;
      }
 
+     public static function delete(string $table, int $id) : bool
+     {
+          $stmt = self::$connection->prepare("DELETE FROM $table WHERE id = :id");
+          $stmt->execute(['id' => $id]);
+          
+          return true;
+     }
+
      public static function findById($table, $id)
      {
           $stmt = self::$connection->prepare("SELECT * FROM $table WHERE id = :id LIMIT 1");
