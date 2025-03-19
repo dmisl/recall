@@ -20,11 +20,36 @@ class DatabaseService
           {
                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
           }
-          $sql = "INSERT INTO $table ($columns) VALUES ($values)";
-          $stmt = self::$connection->prepare($sql);
+
+          $stmt = self::$connection->prepare("INSERT INTO $table ($columns) VALUES ($values)");
           $stmt->execute($data);
 
           return self::$connection->lastInsertId();
+     }
+
+     public static function update(string $table, int $id, array $data) : bool
+     {
+          $columns = implode(", ", array_keys($data));
+          $values = implode(", ", array_map(fn($key) => ":$key", array_keys($data)));
+          $setString = "";
+          foreach ($data as $key => $value) {
+               if(strlen($setString) != 0)
+               {
+                    $setString .= ', ';
+               }
+               $setString .= "$key = :$key";
+          }
+          if(isset($data['password']))
+          {
+               $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+          }
+
+          $data['id'] = $id;
+
+          $stmt = self::$connection->prepare("UPDATE $table SET $setString WHERE id = :id");
+          $stmt->execute($data);
+
+          return true;
      }
 
      public static function findById($table, $id)

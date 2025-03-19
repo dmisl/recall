@@ -14,14 +14,7 @@ abstract class Model
 
      protected function __construct(array $data = [])
      {
-          $this->fill($data);
-     }
-
-     protected function fill(array $data)
-     {
-          foreach ($data as $key => $value) {
-               $this->attributes[$key] = $value;
-          }
+          $this->attributes = $data;
      }
 
      public function __get($key)
@@ -29,9 +22,15 @@ abstract class Model
           return $this->attributes[$key] ?? null;
      }
 
+     public function __set($property, $value)
+     {
+          $this->attributes[$property] = $value;
+     }
+
      public static function find($id)
      {
-          self::checkInstance();
+          static::checkInstance();
+
           $result = DatabaseService::findById(self::$table, $id);
           
           return new static($result);
@@ -39,7 +38,8 @@ abstract class Model
 
      public static function create(array $parameters) : static
      {
-          self::checkInstance();
+          static::checkInstance();
+
           $column_data = [];
           foreach (self::$unique_columns as $unique_column) {
                foreach ($parameters as $column => $value) {
@@ -51,7 +51,7 @@ abstract class Model
           }
           if(!DatabaseService::exists(self::$table, $column_data))
           {
-               DatabaseService::insert(self::$table, $parameters);
+               return static::find(DatabaseService::insert(self::$table, $parameters));
           } else
           {
                // here we should realize redirect back with message
@@ -60,11 +60,21 @@ abstract class Model
           return self::$instance;
      }
 
+     public function update(array $data)
+     {
+          echo DatabaseService::update(static::$table, $this->id, $data);
+
+          foreach ($data as $key => $value) {
+               $this->attributes[$key] = $key != 'password' ? $value : password_hash($value, PASSWORD_DEFAULT);
+          }
+
+          return static::find($this->id);
+     }
+
      protected static function checkInstance()
      {
-          if(self::$instance === null)
+          if(!isset(static::$table) && !isset(self::$unique_columns))
           {
-               self::$instance = new static();
                self::$table = strtolower((new \ReflectionClass(static::class))->getShortName()).'s';
                self::$unique_columns = DatabaseService::getUniqueRecords(self::$table);
           }
