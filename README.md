@@ -17,6 +17,7 @@ version control and git basics
 mikro frameworki
 Swoole, WebSockets, GraphQL
 mikroserwisy
+nginx php-fpm
 
 oop
 
